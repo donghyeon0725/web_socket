@@ -9,7 +9,8 @@ public class CORSConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOrigins("http://localhost:8080", "http://localhost:8081")
-                .allowedMethods("GET","POST","PATCH", "PUT", "DELETE");
+                // 웹 소켓 처럼, 통신 할 때마다 인증 정보를 주고 보내는 경우, Origin을 모두 허용인(* = asterisk)를 사용할 수 없다.
+                .allowedOrigins("http://localhost:3000")
+                .allowedMethods("*");
     }
 }

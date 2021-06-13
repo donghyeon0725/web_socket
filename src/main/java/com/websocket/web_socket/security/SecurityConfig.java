@@ -1,12 +1,17 @@
 package com.websocket.web_socket.security;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.session.SessionManagementFilter;
 
+/**
+ * 시큐리티 또한 cors 정책에 따라 other origin을 block 하는데, 이를 방지하기 위한 설정
+ * */
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
@@ -24,7 +29,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 // 요청에 대한 사용권한 체크
                 .authorizeRequests()
                 .anyRequest().permitAll();
-
 
         http.headers().frameOptions().disable();
     }
