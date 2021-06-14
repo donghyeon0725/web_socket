@@ -19,6 +19,12 @@
     <scope>test</scope>
 </dependency>
 
+<!-- 웹소켓 -->
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-websocket</artifactId>
+</dependency>
+
 <!-- 토큰과 json 변환을 위한 클래스 -->
 <dependency>
     <groupId>io.jsonwebtoken</groupId>
