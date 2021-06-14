@@ -1,5 +1,6 @@
-package com.websocket.web_socket.socket;
+package com.websocket.web_socket.socket.handlerManager;
 
+import com.websocket.web_socket.socket.handlers.anotation.ChannelHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;

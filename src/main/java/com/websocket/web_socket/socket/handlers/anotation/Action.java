@@ -1,4 +1,4 @@
-package com.websocket.web_socket.socket;
+package com.websocket.web_socket.socket.handlers.anotation;
 
 import java.lang.annotation.*;
 

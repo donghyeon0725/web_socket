@@ -2,6 +2,9 @@ package com.websocket.web_socket.socket;
 
 import com.websocket.web_socket.model.UserId;
 import com.websocket.web_socket.security.TokenManager;
+import com.websocket.web_socket.socket.handlerManager.ChannelHandlerInvoker;
+import com.websocket.web_socket.socket.handlerManager.ChannelHandlerResolver;
+import com.websocket.web_socket.socket.handlerManager.IncomingMessage;
 import com.websocket.web_socket.util.JsonUtils;
 import io.jsonwebtoken.JwtException;
 import org.slf4j.Logger;
@@ -16,6 +19,9 @@ import org.springframework.web.socket.handler.TextWebSocketHandler;
  * TextWebSocketHandler 를 상속 받음으로써,
  * 소켓 요청이 들어 왔을 때
  * 해당 요청을 받아서 처리해 줄 수 있는 가장 앞에 있는 컨트롤러
+ *
+ * 연결과, 해제에 대해서만 관리할 뿐
+ * 채널의 발행과 관련해서 역할을 수행하지는 않습니다.
  * */
 @Component
 public class WebSocketRequestDispatcher extends TextWebSocketHandler {
@@ -67,6 +73,7 @@ public class WebSocketRequestDispatcher extends TextWebSocketHandler {
       return;
     }
 
+    // 적절한 핸들러를 찾고, 해당 핸들러에 wrapper인 invoker를 반환 합니다.
     ChannelHandlerInvoker invoker = channelHandlerResolver.findInvoker(incomingMessage);
     if (invoker == null) {
       String errorMessage = "No handler found for action `" + incomingMessage.getAction() +

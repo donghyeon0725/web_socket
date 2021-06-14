@@ -1,4 +1,8 @@
-package com.websocket.web_socket.socket;
+package com.websocket.web_socket.socket.handlerManager;
+
+import com.websocket.web_socket.socket.WebSocketRequestDispatcher;
+import com.websocket.web_socket.socket.handlers.anotation.Action;
+import com.websocket.web_socket.socket.handlers.anotation.ChannelHandler;
 
 /**
  * 채널의 패턴, 동작, 정보를 정의할 클래스

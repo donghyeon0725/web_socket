@@ -5,7 +5,12 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.socket.config.annotation.EnableWebSocket;
 import org.springframework.web.socket.config.annotation.WebSocketConfigurer;
+import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistration;
 import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry;
+
+import java.lang.reflect.Method;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * 이 설정이 있어야, 소켓의 요청을 받을 수 있다.
@@ -15,6 +20,10 @@ import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry
 public class WebSocketConfiguration implements WebSocketConfigurer {
 
     private WebSocketRequestDispatcher requestDispatcher;
+
+    private String socketServerUrl = "/rt";
+
+    private String origin = "http://localhost:3000";
 
     public WebSocketConfiguration(WebSocketRequestDispatcher requestDispatcher) {
         this.requestDispatcher = requestDispatcher;
@@ -26,6 +35,6 @@ public class WebSocketConfiguration implements WebSocketConfigurer {
      * */
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
-        registry.addHandler(requestDispatcher, "/rt").setAllowedOrigins("http://localhost:3000").withSockJS();
+        registry.addHandler(requestDispatcher, socketServerUrl).setAllowedOrigins(origin).withSockJS();
     }
 }

@@ -1,5 +1,6 @@
 package com.websocket.web_socket.domain;
 
+import com.websocket.web_socket.socket.updater.ClockUpdater;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

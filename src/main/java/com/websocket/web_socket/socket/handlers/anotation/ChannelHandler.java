@@ -1,5 +1,6 @@
-package com.websocket.web_socket.socket;
+package com.websocket.web_socket.socket.handlers.anotation;
 
+import com.websocket.web_socket.socket.WebSocketRequestDispatcher;
 import org.springframework.stereotype.Component;
 
 import java.lang.annotation.*;

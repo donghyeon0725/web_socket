@@ -18,6 +18,7 @@ import java.net.URI;
  *
  * 사용자 별로 세션을 생성할 수 있도록 했습니다.
  *
+ * 토큰을 추출하거나, 각각의 세션에 메세지를 보내는 역할을 수행합니다.
  * A wrapper over {@link WebSocketSession} to add convenient methods
  */
 public class RealTimeSession {
