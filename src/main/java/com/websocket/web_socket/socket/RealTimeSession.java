@@ -1,6 +1,7 @@
 package com.websocket.web_socket.socket;
 
 import com.websocket.web_socket.model.UserId;
+import com.websocket.web_socket.socket.message.WebSocketMessages;
 import com.websocket.web_socket.util.JsonUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,4 +1,4 @@
-package com.websocket.web_socket.socket;
+package com.websocket.web_socket.socket.message;
 
 import com.websocket.web_socket.util.JsonUtils;
 import org.springframework.web.socket.TextMessage;
@@ -33,8 +33,10 @@ public class WebSocketMessages {
     return new TextMessage(JsonUtils.toJson(messageObject));
   }
 
-  public static TextMessage channelMessage(String channel, String payload) {
+  public static TextMessage channelMessage(String channel, Event event, String payload) {
     Map<String, String> messageObject = new HashMap<>();
+    messageObject.put("type", "message");
+    messageObject.put("do", event.name());
     messageObject.put("channel", channel);
     messageObject.put("payload", payload);
     return new TextMessage(JsonUtils.toJson(messageObject));

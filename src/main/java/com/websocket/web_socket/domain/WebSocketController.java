@@ -23,9 +23,10 @@ public class WebSocketController {
     }
 
     @PostMapping("/clock")
-    public ResponseEntity clock_post(@RequestBody Clock clock) {
-        Clock c = webSocketService.createClock(clock);
-        return new ResponseEntity(c,null, HttpStatus.OK);
+    public ResponseEntity clock_post(@RequestBody Clock c) {
+        Clock clock = webSocketService.createClock(c);
+        clockUpdater.onClockAdded(clock);
+        return new ResponseEntity(clock,null, HttpStatus.OK);
     }
 
     @DeleteMapping("/clock/{id}")

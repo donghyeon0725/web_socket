@@ -1,4 +1,4 @@
-package com.websocket.web_socket.socket.handlerManager;
+package com.websocket.web_socket.socket.message;
 
 import com.websocket.web_socket.socket.WebSocketRequestDispatcher;
 import com.websocket.web_socket.socket.handlers.anotation.Action;

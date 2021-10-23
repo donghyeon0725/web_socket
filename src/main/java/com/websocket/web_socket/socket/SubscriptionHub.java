@@ -1,6 +1,8 @@
 package com.websocket.web_socket.socket;
 
 import com.websocket.web_socket.model.UserId;
+import com.websocket.web_socket.socket.message.Event;
+import com.websocket.web_socket.socket.message.WebSocketMessages;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.Assert;
@@ -91,7 +93,7 @@ public final class SubscriptionHub {
   /**
    * 채널에 저장된 소켓에 메세지를 보냅니다.
    * */
-  public static void send(String channel, String update) {
+  public static void send(String channel, Event event, String update) {
     Assert.hasText(channel, "Parameter `channel` must not be empty");
     Assert.hasText(update, "Parameter `update` must not be null");
 
@@ -102,16 +104,16 @@ public final class SubscriptionHub {
     }
 
     for (WebSocketSession subscriber: subscribers) {
-      sendTo(subscriber, channel, update);
+      sendTo(subscriber, channel, event, update);
     }
   }
 
   /**
    * 특정 사용자에게만 메세지를 보냅니다.
    * */
-  private static void sendTo(WebSocketSession subscriber, String channel, String update) {
+  private static void sendTo(WebSocketSession subscriber, String channel, Event event, String update) {
     try {
-      subscriber.sendMessage(WebSocketMessages.channelMessage(channel, update));
+      subscriber.sendMessage(WebSocketMessages.channelMessage(channel, event, update));
       log.debug("RealTimeSession[{}] Send message `{}` to subscriber at channel `{}`",
         subscriber.getId(), update, channel);
     } catch (IOException e) {

@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 @Service
 public class WebSocketService {
     private List<Clock> clockRepository = new ArrayList<>();
+    private int seq = 3;
 
     {
         clockRepository.add(
@@ -35,6 +36,7 @@ public class WebSocketService {
     }
 
     public Clock createClock(Clock clock) {
+        clock.setId(seq++);
         this.clockRepository.add(clock);
 
         return clock;

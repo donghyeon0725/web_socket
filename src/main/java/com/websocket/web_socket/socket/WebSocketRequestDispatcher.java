@@ -4,7 +4,7 @@ import com.websocket.web_socket.model.UserId;
 import com.websocket.web_socket.security.TokenManager;
 import com.websocket.web_socket.socket.handlerManager.ChannelHandlerInvoker;
 import com.websocket.web_socket.socket.handlerManager.ChannelHandlerResolver;
-import com.websocket.web_socket.socket.handlerManager.IncomingMessage;
+import com.websocket.web_socket.socket.message.IncomingMessage;
 import com.websocket.web_socket.util.JsonUtils;
 import io.jsonwebtoken.JwtException;
 import org.slf4j.Logger;
